@@ -1,0 +1,22 @@
+{
+    "sourceFile": "routes/index.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1654910303134,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1654910310641,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,11 +9,8 @@\n \n module.exports = router  //module exports the Router object.\n \n \n-// --OLD--\n-// var express = require('express');\n-// var router = express.Router();\n \n // /* GET home page. */\n // router.get('/', function(req, res, next) {\n //   res.render('index', { title: 'Express' });\n"
+                }
+            ],
+            "date": 1654910303134,
+            "name": "Commit-0",
+            "content": "console.log(\"----ROUTES/INDEX----\")\nconst express = require(\"express\") //imports the Express application object\nconst router = express.Router() //uses express to get a Router object\n// new\n//const ctrlMain = require(\"../app_server/controllers/main\")\nconst ctrlMain = require(\"../controllers/main\")\n/* GET home page. */\nrouter.get(\"/\", ctrlMain.index) //adds routes to it using the get() method.\n\nmodule.exports = router  //module exports the Router object.\n\n\n// --OLD--\n// var express = require('express');\n// var router = express.Router();\n\n// /* GET home page. */\n// router.get('/', function(req, res, next) {\n//   res.render('index', { title: 'Express' });\n// });\n\n//REFERENCES\n//https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/routes\n"
+        }
+    ]
+}

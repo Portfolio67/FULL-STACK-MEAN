@@ -1,0 +1,22 @@
+{
+    "sourceFile": "routes/news.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1654910452818,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1654910460328,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n-\n+console.log(\"----ROUTES/NEWS----\")\n const express = require(\"express\")\n const router = express.Router()\n const controller = require(\"../controllers/news\") //first needs path to see the object\n \n"
+                }
+            ],
+            "date": 1654910452818,
+            "name": "Commit-0",
+            "content": "\nconst express = require(\"express\")\nconst router = express.Router()\nconst controller = require(\"../controllers/news\") //first needs path to see the object\n\n/* GET travel page. */\nrouter.get(\"/\", controller.news)\n\nmodule.exports = router\n"
+        }
+    ]
+}

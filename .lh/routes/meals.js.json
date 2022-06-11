@@ -1,0 +1,18 @@
+{
+    "sourceFile": "routes/meals.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1654910481333,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1654910481333,
+            "name": "Commit-0",
+            "content": "console.log(\"----ROUTES/NEWS----\")\nconst express = require(\"express\")\nconst router = express.Router()\nconst controller = require(\"../controllers/meals\") //first needs path to see the object\n\n/* GET travel page. */\nrouter.get(\"/\", controller.meals)\n\nmodule.exports = router\n"
+        }
+    ]
+}

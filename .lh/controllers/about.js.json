@@ -1,0 +1,18 @@
+{
+    "sourceFile": "controllers/about.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1654910645709,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1654910645709,
+            "name": "Commit-0",
+            "content": "/* GET about view */\nconsole.log(\"----CONTROLLERS/TRAVEL----\")\nconst about = (req, res) => {\n    console.log(\"the about page in the controller has been reached\")\n    res.render(\"about\", { title: \"Travlr Getaways\" })\n  }\n  module.exports = {\n    about,\n  }\n  "
+        }
+    ]
+}

@@ -1,0 +1,30 @@
+{
+    "sourceFile": "controllers/travel.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1654910545692,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1654910551962,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,27 +1,9 @@\n /* GET travel view */\n console.log(\"----CONTROLLERS/TRAVEL----\")\n \n-//var fs = require('fs');\n-//var trips = JSON.parse(fs.readFileSync('./data/trips.json', 'utf8'));\n \n-// fs allows accsess to the file system of the web server\n-//const fs = require('fs');\n-// when read it returns a string that gets passed to a json object with parse method, returning an object\n-//const trips = JSON.parse(fs.readFileSync('./data/trips.json', 'utf8'));\n-// FIXME \n \n-// const travel = (req, res) => {\n-//     console.log(\"the travel in the controller has been reached\")\n-//     res.render(\"travel\", { title: \"Travlr Getaways\", trips }) // this will pass in the page title and trips\n-//   }\n-//   module.exports = {\n-//     travel,\n-//   }\n-  \n-\n-//new\n-\n const request = require(\"request\");\n const apiOptions = {\n   server: \"http://localhost:3000\",\n };\n"
+                },
+                {
+                    "date": 1654910568245,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,8 @@\n /* GET travel view */\n console.log(\"----CONTROLLERS/TRAVEL----\")\n \n \n-\n const request = require(\"request\");\n const apiOptions = {\n   server: \"http://localhost:3000\",\n };\n@@ -50,9 +49,8 @@\n   travelList,\n };\n \n // TRAVEL DEALS\n-\n // internal method to contain the logic for processing the response body returned from the API call and render the travel view.\n const rendertravelDetails = (rec, res, responseBody) => {\n   let message = null;\n   let pageTitle = process.env.npm_package_description + \" Travel\";\n"
+                },
+                {
+                    "date": 1654910599751,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,7 @@\n /* GET travel view */\n console.log(\"----CONTROLLERS/TRAVEL----\")\n \n-\n const request = require(\"request\");\n const apiOptions = {\n   server: \"http://localhost:3000\",\n };\n"
+                }
+            ],
+            "date": 1654910545692,
+            "name": "Commit-0",
+            "content": "/* GET travel view */\nconsole.log(\"----CONTROLLERS/TRAVEL----\")\n\n//var fs = require('fs');\n//var trips = JSON.parse(fs.readFileSync('./data/trips.json', 'utf8'));\n\n// fs allows accsess to the file system of the web server\n//const fs = require('fs');\n// when read it returns a string that gets passed to a json object with parse method, returning an object\n//const trips = JSON.parse(fs.readFileSync('./data/trips.json', 'utf8'));\n// FIXME \n\n// const travel = (req, res) => {\n//     console.log(\"the travel in the controller has been reached\")\n//     res.render(\"travel\", { title: \"Travlr Getaways\", trips }) // this will pass in the page title and trips\n//   }\n//   module.exports = {\n//     travel,\n//   }\n  \n\n//new\n\nconst request = require(\"request\");\nconst apiOptions = {\n  server: \"http://localhost:3000\",\n};\n//  TRAVEL LIST\n// internal method to contain the logic for processing the response body returned from the API call and render the travel view.\nconst renderTravelList = (rec, res, responseBody) => {\n  let message = null;\n  let pageTitle = process.env.npm_package_description + \" Travel\";\n\n  if (!(responseBody instanceof Array)) {\n    message = \"API lookup error\";\n    responseBody = [];\n  } else {\n    if (!responseBody.length) {\n      message = \"No trips exist in database\";\n    }\n  }\n  res.render(\"travel\", {\n    title: pageTitle,\n    trips: responseBody,\n    message,\n  });\n};\n\n/* get travel list*/\nconst travelList = (req, res) => {\n  const path = \"/api/trips\";\n  const requestOptions = {\n    url: `${apiOptions.server}${path}`,\n    method: \"GET\",\n    json: {},\n  };\n\n  console.info(\" >> travelcontroller.travelList calling\" + requestOptions.url);\n  request(requestOptions, (err, { statusCode }, body) => {\n    if (err) {\n      console.error(err);\n    }\n    renderTravelList(req, res, body); // call to handle reder view\n  });\n};\n\nmodule.exports = {\n  travelList,\n};\n\n// TRAVEL DEALS\n\n// internal method to contain the logic for processing the response body returned from the API call and render the travel view.\nconst rendertravelDetails = (rec, res, responseBody) => {\n  let message = null;\n  let pageTitle = process.env.npm_package_description + \" Travel\";\n\n  if (!(responseBody instanceof Array)) {\n    message = \"API lookup error\";\n    responseBody = [];\n  } else {\n    if (!responseBody.length) {\n      message = \"No trave lDetails exist in database\";\n    }\n  }\n  res.render(\"travel\", {\n    title: pageTitle,\n    trips: responseBody,\n    message,\n  });\n};\n\n/* get travel list*/\nconst travelDetails = (req, res) => {\n  const path = \"/api/trips/\";\n  const requestOptions = {\n    url: `${apiOptions.server}${path}`,\n    method: \"GET\",\n    json: {},\n  };\n\n  console.info(\" >> travelcontroller.travelDetails calling\" + requestOptions.url);\n  request(requestOptions, (err, { statusCode }, body) => {\n    if (err) {\n      console.error(err);\n    }\n    rendertravelDetails(req, res, body); // call to handle reder view\n  });\n};\n\nmodule.exports = {\n  travelDetails, travelList\n};\n"
+        }
+    ]
+}

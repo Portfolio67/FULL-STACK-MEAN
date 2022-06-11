@@ -1,0 +1,34 @@
+{
+    "sourceFile": "app_api/routes/index.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 4,
+            "patches": [
+                {
+                    "date": 1654910712667,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1654910889200,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,8 +8,9 @@\n router\n   .route(\"/trips\")\n   .get(tripsController.tripsList)\n   .post(auth, tripsController.tripsAddTrip);\n+  .post(auth, tripsController.tripsAddTrip);\n \n router\n   .route(\"/trips/:tripCode\")\n   .get(tripsController.tripsList)\n"
+                },
+                {
+                    "date": 1654910894714,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,10 +7,10 @@\n \n router\n   .route(\"/trips\")\n   .get(tripsController.tripsList)\n-  .post(auth, tripsController.tripsAddTrip);\n-  .post(auth, tripsController.tripsAddTrip);\n+  //.post(auth, tripsController.tripsAddTrip);\n+  .post(tripsController.tripsAddTrip);\n \n router\n   .route(\"/trips/:tripCode\")\n   .get(tripsController.tripsList)\n"
+                },
+                {
+                    "date": 1654910900141,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,8 +14,9 @@\n router\n   .route(\"/trips/:tripCode\")\n   .get(tripsController.tripsList)\n   .put(auth, tripsController.tripsUpdateTrip);\n+  .put(auth, tripsController.tripsUpdateTrip);\n \n router.route(\"/trips/:tripCode\").get(tripsController.tripsFindCode);\n \n console.log('---END---- APP_API/ROUTES/INDEX.JS--------')\n"
+                },
+                {
+                    "date": 1654910914043,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,10 +13,10 @@\n \n router\n   .route(\"/trips/:tripCode\")\n   .get(tripsController.tripsList)\n-  .put(auth, tripsController.tripsUpdateTrip);\n-  .put(auth, tripsController.tripsUpdateTrip);\n+  .put(tripsController.tripsUpdateTrip);\n+  //.put(auth, tripsController.tripsUpdateTrip);\n \n router.route(\"/trips/:tripCode\").get(tripsController.tripsFindCode);\n \n console.log('---END---- APP_API/ROUTES/INDEX.JS--------')\n"
+                }
+            ],
+            "date": 1654910712667,
+            "name": "Commit-0",
+            "content": "\nconsole.log('----------- APP_API/ROUTES/INDEX.JS--------')\n\nconst express = require('express');\nconst router = express.Router();\nconst tripsController = require(\"../controllers/trips\");\n\nrouter\n  .route(\"/trips\")\n  .get(tripsController.tripsList)\n  .post(auth, tripsController.tripsAddTrip);\n\nrouter\n  .route(\"/trips/:tripCode\")\n  .get(tripsController.tripsList)\n  .put(auth, tripsController.tripsUpdateTrip);\n\nrouter.route(\"/trips/:tripCode\").get(tripsController.tripsFindCode);\n\nconsole.log('---END---- APP_API/ROUTES/INDEX.JS--------')\nmodule.exports = router;\n\n"
+        }
+    ]
+}

@@ -1,0 +1,18 @@
+{
+    "sourceFile": "controllers/news.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1654910612803,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1654910612803,
+            "name": "Commit-0",
+            "content": "/* GET news view */\nconsole.log(\"----CONTROLLERS/TRAVEL----\")\nconst news = (req, res) => {\n    console.log(\"the news page in the controller has been reached\")\n    res.render(\"news\", { title: \"Travlr Getaways\" }) \n  }\n  module.exports = {\n    news,\n  }\n  "
+        }
+    ]
+}

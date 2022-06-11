@@ -1,0 +1,26 @@
+{
+    "sourceFile": "routes/rooms.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1654910443936,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1654910449572,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n-\n+console.log(\"----ROOMS/TRAVEL----\")\n const express = require(\"express\")\n const router = express.Router()\n const controller = require(\"../controllers/rooms\")\n \n"
+                },
+                {
+                    "date": 1654910469055,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n-console.log(\"----ROOMS/TRAVEL----\")\n+console.log(\"----ROURES/TRAVELL----\")\n const express = require(\"express\")\n const router = express.Router()\n const controller = require(\"../controllers/rooms\")\n \n"
+                }
+            ],
+            "date": 1654910443936,
+            "name": "Commit-0",
+            "content": "\nconst express = require(\"express\")\nconst router = express.Router()\nconst controller = require(\"../controllers/rooms\")\n\n/* GET travel page. */\nrouter.get(\"/\", controller.rooms)\n\nmodule.exports = router\n"
+        }
+    ]
+}
