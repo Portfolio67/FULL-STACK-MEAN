@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 3,
+            "activePatchIndex": 9,
             "patches": [
                 {
                     "date": 1654910391639,
@@ -20,6 +20,30 @@
                 {
                     "date": 1654910429634,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,5 +9,5 @@\n router.get(\"/\", controller.travelList);\n \n module.exports = router;\n \n-console.log(\"----CONTROLLERS/MAIN----\")\n\\ No newline at end of file\n+console.log(\"----ROUTES/TRAVEL----\")\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1654915491182,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,11 +3,12 @@\n const express = require(\"express\");\n const router = express.Router();\n //new 06/06\n const controller = require(\"../controllers/travel\");\n+\n console.log(controller.travelList);\n console.log(controller);\n router.get(\"/\", controller.travelList);\n \n module.exports = router;\n \n\\ No newline at end of file\n-console.log(\"----ROUTES/TRAVEL----\")\n+console.log(\"----END  ROUTES/TRAVEL----\")\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1654915501552,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,8 +4,9 @@\n const router = express.Router();\n //new 06/06\n const controller = require(\"../controllers/travel\");\n \n+console.log(\"----RAVEL----\")\n console.log(controller.travelList);\n console.log(controller);\n router.get(\"/\", controller.travelList);\n \n"
+                },
+                {
+                    "date": 1654915508116,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n const router = express.Router();\n //new 06/06\n const controller = require(\"../controllers/travel\");\n \n-console.log(\"----RAVEL----\")\n+console.log(\":::::\")\n console.log(controller.travelList);\n console.log(controller);\n router.get(\"/\", controller.travelList);\n \n"
+                },
+                {
+                    "date": 1654915513177,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n const router = express.Router();\n //new 06/06\n const controller = require(\"../controllers/travel\");\n \n-console.log(\":::::\")\n+console.log(\":::::TRAVELLSIT\")\n console.log(controller.travelList);\n console.log(controller);\n router.get(\"/\", controller.travelList);\n \n"
+                },
+                {
+                    "date": 1654915519003,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n const router = express.Router();\n //new 06/06\n const controller = require(\"../controllers/travel\");\n \n-console.log(\":::::TRAVELLSIT\")\n+console.log(\":::::TRAVELLIST\")\n console.log(controller.travelList);\n console.log(controller);\n router.get(\"/\", controller.travelList);\n \n"
+                },
+                {
+                    "date": 1654915530078,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n const router = express.Router();\n //new 06/06\n const controller = require(\"../controllers/travel\");\n \n-console.log(\":::::TRAVELLIST\")\n+console.log(\":::::TRAVELLIST::::\")\n console.log(controller.travelList);\n console.log(controller);\n router.get(\"/\", controller.travelList);\n \n"
                 }
             ],
             "date": 1654910391639,

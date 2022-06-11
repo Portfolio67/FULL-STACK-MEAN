@@ -1,0 +1,46 @@
+{
+    "sourceFile": "travlr-admin/src/app/trip-listing/trip-listing.component.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 7,
+            "patches": [
+                {
+                    "date": 1654921633455,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1654921638537,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n import { Component, OnInit } from '@angular/core';\n-impo\n+import {}\n @Component({\n   selector: 'app-trip-listing',\n   templateUrl: './trip-listing.component.html',\n   styleUrls: ['./trip-listing.component.css']\n"
+                },
+                {
+                    "date": 1654921644006,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n import { Component, OnInit } from '@angular/core';\n-import {}\n+import { tri}\n @Component({\n   selector: 'app-trip-listing',\n   templateUrl: './trip-listing.component.html',\n   styleUrls: ['./trip-listing.component.css']\n"
+                },
+                {
+                    "date": 1654921657962,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,13 +1,14 @@\n import { Component, OnInit } from '@angular/core';\n-import { tri}\n+import { trips } from './data/trips';\n @Component({\n   selector: 'app-trip-listing',\n   templateUrl: './trip-listing.component.html',\n   styleUrls: ['./trip-listing.component.css']\n })\n export class TripListingComponent implements OnInit {\n \n+  \n   constructor() { }\n \n   ngOnInit() {\n   }\n"
+                },
+                {
+                    "date": 1654921664651,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n   styleUrls: ['./trip-listing.component.css']\n })\n export class TripListingComponent implements OnInit {\n \n-  \n+  trips:\n   constructor() { }\n \n   ngOnInit() {\n   }\n"
+                },
+                {
+                    "date": 1654921671218,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n   styleUrls: ['./trip-listing.component.css']\n })\n export class TripListingComponent implements OnInit {\n \n-  trips:\n+  trips: Array\n   constructor() { }\n \n   ngOnInit() {\n   }\n"
+                },
+                {
+                    "date": 1654921678845,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n   styleUrls: ['./trip-listing.component.css']\n })\n export class TripListingComponent implements OnInit {\n \n-  trips: Array\n+  trips: Array<any>\n   constructor() { }\n \n   ngOnInit() {\n   }\n"
+                },
+                {
+                    "date": 1654921686904,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n   styleUrls: ['./trip-listing.component.css']\n })\n export class TripListingComponent implements OnInit {\n \n-  trips: Array<any>\n+  trips: Array<any> = trips;\n   constructor() { }\n \n   ngOnInit() {\n   }\n"
+                }
+            ],
+            "date": 1654921633455,
+            "name": "Commit-0",
+            "content": "import { Component, OnInit } from '@angular/core';\nimpo\n@Component({\n  selector: 'app-trip-listing',\n  templateUrl: './trip-listing.component.html',\n  styleUrls: ['./trip-listing.component.css']\n})\nexport class TripListingComponent implements OnInit {\n\n  constructor() { }\n\n  ngOnInit() {\n  }\n\n}\n"
+        }
+    ]
+}

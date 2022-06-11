@@ -1,0 +1,94 @@
+{
+    "sourceFile": "app_api/controllers/trips.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 19,
+            "patches": [
+                {
+                    "date": 1654913928459,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1654913934648,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n const mongoose = require(\"mongoose\");\n const Model = mongoose.model(\"trips\");\n //const user = mongoose.model(\"users\");\n \n-// \n+// :::::GET\n const tripsList = async (req, res) => {\n   Model.find({}).exec((err, trips) => {\n     if (!trips) {\n       return res.status(404).json({ message: \"trips not found\" });\n"
+                },
+                {
+                    "date": 1654913941551,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n const mongoose = require(\"mongoose\");\n const Model = mongoose.model(\"trips\");\n //const user = mongoose.model(\"users\");\n \n-// :::::GET\n+// :::::GET:::::::\n const tripsList = async (req, res) => {\n   Model.find({}).exec((err, trips) => {\n     if (!trips) {\n       return res.status(404).json({ message: \"trips not found\" });\n@@ -16,9 +16,9 @@\n       return res.status(200).json(trips);\n     }\n   });\n };\n-\n+// :::::GET:::::::\n const tripsFindCode = async (req, res) => {\n   Model.find({ code: req.params.tripCode }).exec((err, trip) => {\n     if (!trip) {\n       return res.status(404).json({ message: \"trip not found\" });\n"
+                },
+                {
+                    "date": 1654914023490,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,10 @@\n //const user = mongoose.model(\"users\");\n \n // :::::GET:::::::\n const tripsList = async (req, res) => {\n-  Model.find({}).exec((err, trips) => {\n+  Model\n+  .find({}).exec((err, trips) => {\n     if (!trips) {\n       return res.status(404).json({ message: \"trips not found\" });\n     } else if (err) {\n       return res.status(404).json(err);\n@@ -16,9 +17,9 @@\n       return res.status(200).json(trips);\n     }\n   });\n };\n-// :::::GET:::::::\n+// :::::GET ONE:::::::\n const tripsFindCode = async (req, res) => {\n   Model.find({ code: req.params.tripCode }).exec((err, trip) => {\n     if (!trip) {\n       return res.status(404).json({ message: \"trip not found\" });\n"
+                },
+                {
+                    "date": 1654914028711,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n \n // :::::GET:::::::\n const tripsList = async (req, res) => {\n   Model\n-  .find({}).exec((err, trips) => {\n+    .find({}).exec((err, trips) => {\n     if (!trips) {\n       return res.status(404).json({ message: \"trips not found\" });\n     } else if (err) {\n       return res.status(404).json(err);\n"
+                },
+                {
+                    "date": 1654914039523,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,10 @@\n \n // :::::GET:::::::\n const tripsList = async (req, res) => {\n   Model\n-    .find({}).exec((err, trips) => {\n+    .find({})\n+    .exec((err, trips) => {\n     if (!trips) {\n       return res.status(404).json({ message: \"trips not found\" });\n     } else if (err) {\n       return res.status(404).json(err);\n"
+                },
+                {
+                    "date": 1654914045546,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,9 +20,10 @@\n   });\n };\n // :::::GET ONE:::::::\n const tripsFindCode = async (req, res) => {\n-  Model.find({ code: req.params.tripCode }).exec((err, trip) => {\n+  Model\n+    .find({ code: req.params.tripCode }).exec((err, trip) => {\n     if (!trip) {\n       return res.status(404).json({ message: \"trip not found\" });\n     } else if (err) {\n       return res.status(404).json(err);\n"
+                },
+                {
+                    "date": 1654914053961,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,9 +21,10 @@\n };\n // :::::GET ONE:::::::\n const tripsFindCode = async (req, res) => {\n   Model\n-    .find({ code: req.params.tripCode }).exec((err, trip) => {\n+    .find({ code: req.params.tripCode })\n+    .exec((err, trip) => {\n     if (!trip) {\n       return res.status(404).json({ message: \"trip not found\" });\n     } else if (err) {\n       return res.status(404).json(err);\n@@ -35,9 +36,10 @@\n \n const tripsUpdateTrip = async (req, res) => {\n   console.log(req.body);\n   getUser(req, res, (req, res) => {\n-    Model.findOneAndUpdate(\n+    Model\n+      .findOneAndUpdate(\n       { code: req.params.tripCode },\n       {\n         code: req.body.code,\n         name: req.body.name,\n"
+                },
+                {
+                    "date": 1654914072926,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,9 +10,10 @@\n   Model\n     .find({})\n     .exec((err, trips) => {\n     if (!trips) {\n-      return res.status(404).json({ message: \"trips not found\" });\n+      return res\n+      .status(404).json({ message: \"trips not found\" });\n     } else if (err) {\n       return res.status(404).json(err);\n     } else {\n       return res.status(200).json(trips);\n"
+                },
+                {
+                    "date": 1654914081155,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,11 +11,13 @@\n     .find({})\n     .exec((err, trips) => {\n     if (!trips) {\n       return res\n-      .status(404).json({ message: \"trips not found\" });\n+        .status(404)\n+        .json({ message: \"trips not found\" });\n     } else if (err) {\n-      return res.status(404).json(err);\n+      return res\n+        .status(404).json(err);\n     } else {\n       return res.status(200).json(trips);\n     }\n   });\n"
+                },
+                {
+                    "date": 1654914088773,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,11 +15,14 @@\n         .status(404)\n         .json({ message: \"trips not found\" });\n     } else if (err) {\n       return res\n-        .status(404).json(err);\n+        .status(404)\n+        .json(err);\n     } else {\n-      return res.status(200).json(trips);\n+      return res\n+        .status(200)\n+        .json(trips);\n     }\n   });\n };\n // :::::GET ONE:::::::\n"
+                },
+                {
+                    "date": 1654914094581,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -30,9 +30,10 @@\n   Model\n     .find({ code: req.params.tripCode })\n     .exec((err, trip) => {\n     if (!trip) {\n-      return res.status(404).json({ message: \"trip not found\" });\n+      return res\n+        .status(404).json({ message: \"trip not found\" });\n     } else if (err) {\n       return res.status(404).json(err);\n     } else {\n       return res.status(200).json(trip);\n"
+                },
+                {
+                    "date": 1654914101673,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -33,11 +33,14 @@\n     if (!trip) {\n       return res\n         .status(404).json({ message: \"trip not found\" });\n     } else if (err) {\n-      return res.status(404).json(err);\n+      return res\n+        .status(404).json(err);\n     } else {\n-      return res.status(200).json(trip);\n+      return res\n+        .status(200)\n+        .json(trip);\n     }\n   });\n };\n \n"
+                },
+                {
+                    "date": 1654914112356,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -31,12 +31,14 @@\n     .find({ code: req.params.tripCode })\n     .exec((err, trip) => {\n     if (!trip) {\n       return res\n-        .status(404).json({ message: \"trip not found\" });\n+        .status(404)\n+        .json({ message: \"trip not found\" });\n     } else if (err) {\n       return res\n-        .status(404).json(err);\n+        .status(404)\n+        .json(err);\n     } else {\n       return res\n         .status(200)\n         .json(trip);\n@@ -63,9 +65,10 @@\n       { new: true }\n     )\n       .then((trip) => {\n         if (!trip) {\n-          return res.status(404).send({\n+          return res\n+            .status(404).send({\n             message: \"Trip not found with code \" + req.params.tripCode,\n           });\n         }\n         res.send(trip);\n"
+                },
+                {
+                    "date": 1654914118742,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -66,13 +66,15 @@\n     )\n       .then((trip) => {\n         if (!trip) {\n           return res\n-            .status(404).send({\n+            .status(404)\n+            .send({\n             message: \"Trip not found with code \" + req.params.tripCode,\n           });\n         }\n-        res.send(trip);\n+        res\n+          .send(trip);\n       })\n       .catch((err) => {\n         if (err.kind === \"ObjectId\") {\n           return res.status(404).send({\n"
+                },
+                {
+                    "date": 1654914124190,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -76,9 +76,11 @@\n           .send(trip);\n       })\n       .catch((err) => {\n         if (err.kind === \"ObjectId\") {\n-          return res.status(404).send({\n+          return res\n+            .status(404)\n+            .send({\n             message: \"Trip not found with code \" + req.params.tripCode,\n           });\n         }\n         return res\n"
+                },
+                {
+                    "date": 1654914137510,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -119,9 +119,10 @@\n };\n \n const getUser = (req, res, callback) => {\n   if (req.payload && req.payload.email) {\n-    user.findOne({ email: req.payload.email }).exec((err, user) => {\n+    user\n+      .findOne({ email: req.payload.email }).exec((err, user) => {\n       if (!user) {\n         return res.status(404).json({ message: \"User not found\" });\n       } else if (err) {\n         console.log(err);\n"
+                },
+                {
+                    "date": 1654914144179,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -120,9 +120,10 @@\n \n const getUser = (req, res, callback) => {\n   if (req.payload && req.payload.email) {\n     user\n-      .findOne({ email: req.payload.email }).exec((err, user) => {\n+      .findOne({ email: req.payload.email })\n+      .exec((err, user) => {\n       if (!user) {\n         return res.status(404).json({ message: \"User not found\" });\n       } else if (err) {\n         console.log(err);\n"
+                },
+                {
+                    "date": 1654914149950,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -131,9 +131,11 @@\n       }\n       callback(req, res, user.name);\n     });\n   } else {\n-    return res.status(404).json({ message: \"User not found\" });\n+    return res\n+      .status(404)\n+      .json({ message: \"User not found\" });\n   }\n };\n \n module.exports = {\n"
+                },
+                {
+                    "date": 1654914183768,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -27,9 +27,9 @@\n };\n // :::::GET ONE:::::::\n const tripsFindCode = async (req, res) => {\n   Model\n-    .find({ code: req.params.tripCode })\n+    .find({ code: req.params.tripCode }) // MONGOOSE FUNCTIONS USED\n     .exec((err, trip) => {\n     if (!trip) {\n       return res\n         .status(404)\n"
+                }
+            ],
+            "date": 1654913928459,
+            "name": "Commit-0",
+            "content": "console.log('----------- APP_API/CONTROLLERS/TRIPS.JS-------')\n\nconst { model } = require(\"mongoose\");\nconst mongoose = require(\"mongoose\");\nconst Model = mongoose.model(\"trips\");\n//const user = mongoose.model(\"users\");\n\n// \nconst tripsList = async (req, res) => {\n  Model.find({}).exec((err, trips) => {\n    if (!trips) {\n      return res.status(404).json({ message: \"trips not found\" });\n    } else if (err) {\n      return res.status(404).json(err);\n    } else {\n      return res.status(200).json(trips);\n    }\n  });\n};\n\nconst tripsFindCode = async (req, res) => {\n  Model.find({ code: req.params.tripCode }).exec((err, trip) => {\n    if (!trip) {\n      return res.status(404).json({ message: \"trip not found\" });\n    } else if (err) {\n      return res.status(404).json(err);\n    } else {\n      return res.status(200).json(trip);\n    }\n  });\n};\n\nconst tripsUpdateTrip = async (req, res) => {\n  console.log(req.body);\n  getUser(req, res, (req, res) => {\n    Model.findOneAndUpdate(\n      { code: req.params.tripCode },\n      {\n        code: req.body.code,\n        name: req.body.name,\n        length: req.body.length,\n        start: req.body.start,\n        resort: req.body.resort,\n        perPerson: req.body.perPerson,\n        image: req.body.image,\n        description: req.body.description,\n      },\n      { new: true }\n    )\n      .then((trip) => {\n        if (!trip) {\n          return res.status(404).send({\n            message: \"Trip not found with code \" + req.params.tripCode,\n          });\n        }\n        res.send(trip);\n      })\n      .catch((err) => {\n        if (err.kind === \"ObjectId\") {\n          return res.status(404).send({\n            message: \"Trip not found with code \" + req.params.tripCode,\n          });\n        }\n        return res\n          .status(500) // server error\n          .json(err);\n      });\n  });\n};\n\nconst tripsAddTrip = async (req, res) => {\n  getUser(req, res, (req, res) => {\n    Model\n    .create({\n        code: req.body.code,\n        name: req.body.name,\n        length: req.body.length,\n        start: req.body.start,\n        resort: req.body.resort,\n        perPerson: req.body.perPerson,\n        image: req.body.image,\n        description: req.body.description,\n      },\n      (err, trip) => {\n        if (err) {\n          return res\n            .status(400) //bad request\n            .json(err);\n        } else {\n          return res\n            .status(201) //creates\n            .json(trip);\n        }\n      }\n    );\n  });\n};\n\nconst getUser = (req, res, callback) => {\n  if (req.payload && req.payload.email) {\n    user.findOne({ email: req.payload.email }).exec((err, user) => {\n      if (!user) {\n        return res.status(404).json({ message: \"User not found\" });\n      } else if (err) {\n        console.log(err);\n        return res.status(404).json(err);\n      }\n      callback(req, res, user.name);\n    });\n  } else {\n    return res.status(404).json({ message: \"User not found\" });\n  }\n};\n\nmodule.exports = {\n  tripsList,\n  tripsFindCode,\n  tripsAddTrip,\n  tripsUpdateTrip,\n};"
+        }
+    ]
+}

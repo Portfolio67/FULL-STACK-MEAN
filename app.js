@@ -4,18 +4,16 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const morgan = require('morgan');
-//const loggerMean = require('mean-logger');
 const winston = require('./config/winston');
 //Loads the handlebars module 
 const { engine } = require("express-handlebars"); //  //https://stackoverflow.com/questions/59124092/hbs-is-not-define-in-node-js
 
-//new
-require('./app_api/database/db'); // causes database module be imported and executed when statting up
-//const index = require('./routes/index');
-//const users = require('./routes/users');
+//new //FIXME
+require('./app_api/models/db'); // causes database module be imported and executed when statting up
+//require('./app_api/database/db'); // causes database module be imported and executed when statting up
+
 
 const indexRouter = require('./routes/index');
-//console.log(indexRouter);
 const usersRouter = require('./routes/users');
 const travelRouter = require('./routes/travel'); // make new contstant for the app to use for the travel page
 const aboutRouter = require('./routes/about');
@@ -24,7 +22,7 @@ const mealsRouter = require('./routes/meals');
 const newsRouter = require('./routes/news');
 const contactRouter = require('./routes/contact');
 
-
+//new admin 
 const apiRouter = require('./app_api/routes/index');
 
 const app = express();
@@ -34,14 +32,14 @@ app.engine("handlebars", engine()); // calls the deconstructed express object li
 //Sets our app to use the handlebars engine
 app.set("view engine", "handlebars");
 
-// The app object is instantiated on creation of the Express server. It has a middleware stack that can be customized in
-//app.use(logger('dev'));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-//FIXME
+
 app.use(express.static(path.join(__dirname, 'public')));
+
+
 
 //allow CORS for angular and express
 app.use('/api', (req, res, next) => {
