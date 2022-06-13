@@ -5,7 +5,8 @@
   "scripts": {
     "start": "node ./bin/www",
     "dev": "nodemon ./bin/www",
-    "front": "cd travlr-admin && ng serve"
+    "front": "cd travlr-admin && ng serve",
+    "kill": "npx kill-port 3000"
   },
   "dependencies": {
     "app-root-path": "^3.0.0",

@@ -13,10 +13,10 @@ const winston = require("./config/winston");
 const { engine } = require("express-handlebars"); //  //https://stackoverflow.com/questions/59124092/hbs-is-not-define-in-node-js
 const passport = require("passport");
 
-require("./app_api/config/passport");
 //new //FIXME
 //require('./app_api/models/db'); // causes database module be imported and executed when statting up
 require("./app_api/database/db"); // causes database module be imported and executed when statting up
+require("./app_api/config/passport");
 
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
@@ -47,16 +47,16 @@ app.use(passport.initialize());
 //allow CORS for angular and express
 app.use("/api", (req, res, next) => {
   res.header("Access-Control-Allow-Origin", "http://localhost:4200");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept,Authorization");
   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
   next();
 });
 
-app.use((req, res, err) => {
-  if (err.name === "UnauthorizedError") {
-    res.status(401).json({ message: `${error.name}: ${error.message}` });
-  }
-});
+// app.use((req, res, err) => {
+//   if (err.name === "UnauthorizedError") {
+//     res.status(401).json({ message: `${error.name}: ${error.message}` });
+//   }
+// });
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
@@ -92,9 +92,9 @@ app.use(function (err, req, res, next) {
 
 //Initializing logger
 //loggerMean.init(app);
-app.use(morgan("combined"));
-morgan("tiny");
-morgan(":method :url :status :res[content-length] - :response-time ms");
+// app.use(morgan("combined"));
+// morgan("tiny");
+// morgan(":method :url :status :res[content-length] - :response-time ms");
 
 morgan(function (tokens, req, res) {
   return [
@@ -187,30 +187,30 @@ module.exports = app;
 //npm cache clean -force: Cleaning your cache will resolve potential conflicts with previously installed packages.
 //JSONLint
 
-app.use(morgan("combined"));
+// app.use(morgan("combined"));
 
 app.get("/", function (req, res) {
   res.send("hello, world!");
 });
 
-morgan("tiny");
-morgan(":method :url :status :res[content-length] - :response-time ms");
+// morgan("tiny");
+// morgan(":method :url :status :res[content-length] - :response-time ms");
 
-morgan(function (tokens, req, res) {
-  return [
-    tokens.method(req, res),
-    tokens.url(req, res),
-    tokens.status(req, res),
-    tokens.res(req, res, "content-length"),
-    "-",
-    tokens["response-time"](req, res),
-    "ms",
-  ].join(" ");
-});
+// morgan(function (tokens, req, res) {
+//   return [
+//     tokens.method(req, res),
+//     tokens.url(req, res),
+//     tokens.status(req, res),
+//     tokens.res(req, res, "content-length"),
+//     "-",
+//     tokens["response-time"](req, res),
+//     "ms",
+//   ].join(" ");
+// });
 
 // EXAMPLE: only log error responses
-morgan("combined", {
-  skip: function (req, res) {
-    return res.statusCode < 400;
-  },
-});
+// morgan("combined", {
+//   skip: function (req, res) {
+//     return res.statusCode < 400;
+//   },
+// });

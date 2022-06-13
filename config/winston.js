@@ -19,7 +19,7 @@ var options = {
     colorize: false,
   },
   errorFile: {
-    level: 'error',
+    level: 'silly',
     name: 'file.error',
     filename: `${appRoot}/logs/error.log`,
     handleExceptions: true,
@@ -29,17 +29,17 @@ var options = {
     colorize: true,
   },
   console: {
-    level: 'debug',
+    level: 'silly',
     handleExceptions: true,
     json: false,
     colorize: true,
   },
   console: {
-    level: 'http',
+    level: 'silly',
     format: combine(timestamp({format: 'YYYY-MM-DD hh:mm:ss.SSS A',}),json())
   },
   console: {
-    level: 'error',
+    level: 'silly',
     name: 'file.error',
     filename: `${appRoot}/logs/error.log`,
     handleExceptions: true,

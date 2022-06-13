@@ -35,4 +35,5 @@ userSchema.methods.generateJwt = function () {
   ); // DO NOT KEEP YOUR SECRET IN THE CODE!
 };
 console.log('user model reg complete')
+
 module.exports = mongoose.model("users", userSchema);

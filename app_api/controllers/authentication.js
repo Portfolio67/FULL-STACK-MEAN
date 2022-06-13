@@ -1,6 +1,7 @@
+console.log(__dirname);
 const passport = require("passport");
-const mongoose = require("mongoose");
-const User = mongoose.model("users");
+const User = require('mongoose').model('users');
+
 const register = (req, res) => {
   if (!req.body.name || !req.body.email || !req.body.password) {
     return res.status(400).json({ message: "All fields required" });
@@ -18,6 +19,7 @@ const register = (req, res) => {
     }
   });
 };
+
 const login = (req, res) => {
   if (!req.body.email || !req.body.password) {
     return res.status(400).json({ message: "All fields required" });
@@ -34,6 +36,7 @@ const login = (req, res) => {
     }
   })(req, res);
 };
+
 module.exports = {
   register,
   login,

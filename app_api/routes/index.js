@@ -22,9 +22,9 @@ tripsController.tripRoutes.forEach((tripAction) =>
   routeRegister[tripAction.method](tripAction.url, tripAction.handler)
 );
 
-router.route("/login").post(authController.login);
+router.post("/login",authController.login);
 
-router.route("/register").post(authController.register);
+router.post("/register",authController.register);
 
 
 console.log("---END---- APP_API/ROUTES/INDEX.JS--------");
