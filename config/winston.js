@@ -38,6 +38,25 @@ var options = {
     level: 'http',
     format: combine(timestamp({format: 'YYYY-MM-DD hh:mm:ss.SSS A',}),json())
   },
+  console: {
+    level: 'error',
+    name: 'file.error',
+    filename: `${appRoot}/logs/error.log`,
+    handleExceptions: true,
+    json: true,
+    maxsize: 5242880, // 5MB
+    maxFiles: 100,
+    colorize: true,
+  },
+  console: {
+    level: 'silly',
+    filename: `${appRoot}/logs/app.log`,
+    handleExceptions: true,
+    json: true,
+    maxsize: 52428800, // 5GB
+    maxFiles: 5,
+    colorize: false,
+  },
 };
 
 // instantiate a new Winston Logger with the settings defined above

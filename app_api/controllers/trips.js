@@ -1,4 +1,4 @@
-console.log('----------- APP_API/CONTROLLERS/TRIPS.JS-------')
+console.log("----------- APP_API/CONTROLLERS/TRIPS.JS-------");
 
 const { model } = require("mongoose");
 const mongoose = require("mongoose");
@@ -7,50 +7,34 @@ const Model = mongoose.model("trips");
 
 // :::::GET:::::::
 const tripsList = async (req, res) => {
-  Model
-    .find({})
-    .exec((err, trips) => {
+  Model.find({}).exec((err, trips) => {
     if (!trips) {
-      return res
-        .status(404)
-        .json({ message: "trips not found" });
+      return res.status(404).json({ message: "trips not found" });
     } else if (err) {
-      return res
-        .status(404)
-        .json(err);
+      return res.status(404).json(err);
     } else {
-      return res
-        .status(200)
-        .json(trips);
+      return res.status(200).json(trips);
     }
   });
 };
 // :::::GET ONE:::::::
 const tripsFindCode = async (req, res) => {
-  Model
-    .find({ code: req.params.tripCode }) // MONGOOSE FUNCTIONS USED
+  Model.find({ code: req.params.tripCode }) // MONGOOSE FUNCTIONS USED
     .exec((err, trip) => {
-    if (!trip) {
-      return res
-        .status(404)
-        .json({ message: "trip not found" });
-    } else if (err) {
-      return res
-        .status(404)
-        .json(err);
-    } else {
-      return res
-        .status(200)
-        .json(trip);
-    }
-  });
+      if (!trip) {
+        return res.status(404).json({ message: "trip not found" });
+      } else if (err) {
+        return res.status(404).json(err);
+      } else {
+        return res.status(200).json(trip);
+      }
+    });
 };
 
 const tripsUpdateTrip = async (req, res) => {
   console.log(req.body);
   getUser(req, res, (req, res) => {
-    Model
-      .findOneAndUpdate(
+    Model.findOneAndUpdate(
       { code: req.params.tripCode },
       {
         code: req.body.code,
@@ -66,20 +50,15 @@ const tripsUpdateTrip = async (req, res) => {
     )
       .then((trip) => {
         if (!trip) {
-          return res
-            .status(404)
-            .send({
+          return res.status(404).send({
             message: "Trip not found with code " + req.params.tripCode,
           });
         }
-        res
-          .send(trip);
+        res.send(trip);
       })
       .catch((err) => {
         if (err.kind === "ObjectId") {
-          return res
-            .status(404)
-            .send({
+          return res.status(404).send({
             message: "Trip not found with code " + req.params.tripCode,
           });
         }
@@ -92,8 +71,8 @@ const tripsUpdateTrip = async (req, res) => {
 
 const tripsAddTrip = async (req, res) => {
   getUser(req, res, (req, res) => {
-    Model
-    .create({
+    Model.create(
+      {
         code: req.body.code,
         name: req.body.name,
         length: req.body.length,
@@ -120,9 +99,7 @@ const tripsAddTrip = async (req, res) => {
 
 const getUser = (req, res, callback) => {
   if (req.payload && req.payload.email) {
-    user
-      .findOne({ email: req.payload.email })
-      .exec((err, user) => {
+    user.findOne({ email: req.payload.email }).exec((err, user) => {
       if (!user) {
         return res.status(404).json({ message: "User not found" });
       } else if (err) {
@@ -132,15 +109,19 @@ const getUser = (req, res, callback) => {
       callback(req, res, user.name);
     });
   } else {
-    return res
-      .status(404)
-      .json({ message: "User not found" });
+    return res.status(404).json({ message: "User not found" });
   }
 };
 
 module.exports = {
-  tripsList,
-  tripsFindCode,
-  tripsAddTrip,
-  tripsUpdateTrip,
+  tripRoutes: [
+    { method: "get", url: "/trips", handler: tripsList, response: "Trips[]" },
+    { method: "get", url: "/trips/:tripCode", handler: tripsFindCode, response: "Trip" },
+    { method: "post", url: "/trips", handler: tripsAddTrip, response: "Trip" },
+    { method: "patch", url: "/trips/:tripCode", handler: tripsUpdateTrip, response: "Trip" },
+
+    // [tripsFindCode,''],
+    // [tripsAddTrip],
+    // [tripsUpdateTrip],
+  ],
 };

@@ -1,3 +1,4 @@
+console.log('app.js');
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
@@ -9,8 +10,8 @@ const winston = require('./config/winston');
 const { engine } = require("express-handlebars"); //  //https://stackoverflow.com/questions/59124092/hbs-is-not-define-in-node-js
 
 //new //FIXME
-require('./app_api/models/db'); // causes database module be imported and executed when statting up
-//require('./app_api/database/db'); // causes database module be imported and executed when statting up
+//require('./app_api/models/db'); // causes database module be imported and executed when statting up
+require('./app_api/database/db'); // causes database module be imported and executed when statting up
 
 
 const indexRouter = require('./routes/index');
@@ -45,7 +46,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/api', (req, res, next) => {
   res.header('Access-Control-Allow-Origin', 'http://localhost:4200');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-  res.header('Access-Control=Allow-Methods', 'GET, POST, PUT, DELETE');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
   next();
 });
 
