@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "dev": "nodemon ./bin/www"
+    "dev": "nodemon ./bin/www",
+    "front": "cd travlr-admin && ng serve"
   },
   "dependencies": {
     "app-root-path": "^3.0.0",
