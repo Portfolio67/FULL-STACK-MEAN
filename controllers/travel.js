@@ -13,7 +13,7 @@ const apiOptions = {
 
 //  TRAVEL LIST
 // internal method to contain the logic for processing the response body returned from the API call and render the travel view.
-const renderTravelList = (rec, res, responseBody) => {
+const renderTravelList = (rec, /**@type {import("express").Response} */ res, responseBody) => {
   let message = null;
   let pageTitle = process.env.npm_package_description + " - Travel";
 

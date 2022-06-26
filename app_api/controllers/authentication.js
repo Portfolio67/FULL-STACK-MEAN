@@ -1,4 +1,4 @@
-console.log(__dirname);
+//console.log(__dirname); ////prints url 
 const passport = require("passport");
 const User = require('mongoose').model('users');
 
