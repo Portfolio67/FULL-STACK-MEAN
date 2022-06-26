@@ -1,23 +1,132 @@
-
 <div class="col-md-3">
   <h2 class="text-center">Edit Trip</h2>
-  <form [formGroup] = "editForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label>Code:</label>
-      <input type="text" formControlName="code"placeholder="Code" class="form-control"[ngClass]= "{ 'is-invalid': submitted && f.code.errors }">
-      <div *ngIf= "submitted && f.code.errors">
-        <div *ngIf= "f.code.errors.required"> Trip Code is required</div>
+      <input
+        type="text"
+        formControlName="code"
+        placeholder="Code"
+        class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f.code.errors }"
+      />
+      <div *ngIf="submitted && f.code.errors">
+        <div *ngIf="f.code.errors.required">Trip Code is required</div>
       </div>
     </div>
     <div class="form-group">
       <label>Name:</label>
-      <input type="text" formControlName="name"placeholder="Name" class="form-control"[ngClass]="{ 'is-invalid': submitted && f.name.errors }">
+      <input
+        type="text"
+        formControlName="name"
+        placeholder="Name"
+        class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f.name.errors }"
+      />
       <div *ngIf="submitted && f.name.errors">
-        <div *ngIf="f.name.errors.required"> Name is required</div>
+        <div *ngIf="f.name.errors.required">Name is required</div>
       </div>
     </div>
-    <div *ngIf="isLoggedIn()"></div>
-    <button (click)= "editTrip(trip)" class="btn btn-info">Edit</button>
+
+
+
+<!-- length -->
+<div class="form-group">
+  <label>Length:</label>
+  <input
+    type="text"
+    formControlName="length"
+    placeholder="Name"
+    class="form-control"
+    [ngClass]="{ 'is-invalid': submitted && f.name.errors }"
+  />
+  <div *ngIf="submitted && f.name.errors">
+    <div *ngIf="f.length.errors.required">Length is required</div>
+  </div>
+</div>
+<!-- start -->
+<div class="form-group">
+  <label>Start:</label>
+  <input
+    type="text"
+    formControlName="start"
+    placeholder="Length"
+    class="form-control"
+    [ngClass]="{ 'is-invalid': submitted && f.start.errors }"
+  />
+  <div *ngIf="submitted && f.start.errors">
+    <div *ngIf="f.start.errors.required">Start is required</div>
+  </div>
+</div>
+
+<!-- resort -->
+<div class="form-group">
+  <label>Resort:</label>
+  <input
+    type="text"
+    formControlName="resort"
+    placeholder="Resort"
+    class="form-control"
+    [ngClass]="{ 'is-invalid': submitted && f.resort.errors }"
+  />
+  <div *ngIf="submitted && f.resort.errors">
+    <div *ngIf="f.resort.errors.required">Resort is required</div>
+  </div>
+</div>
+
+<!-- perPerson -->
+<div class="form-group">
+  <label>PerPerson:</label>
+  <input
+    type="text"
+    formControlName="perPerson"
+    placeholder="Resort"
+    class="form-control"
+    [ngClass]="{ 'is-invalid': submitted && f.perPerson.errors }"
+  />
+  <div *ngIf="submitted && f.perPerson.errors">
+    <div *ngIf="f.perPerson.errors.required">PerPerson is required</div>
+  </div>
+</div>
+<!-- image -->
+<div class="form-group">
+  <label>Image:</label>
+  <input
+    type="text"
+    formControlName="image"
+    placeholder="Image"
+    class="form-control"
+    [ngClass]="{ 'is-invalid': submitted && f.image.errors }"
+  />
+  <div *ngIf="submitted && f.image.errors">
+    <div *ngIf="f.image.errors.required">Image is required</div>
+  </div>
+</div>
+
+<!-- description -->
+<div class="form-group">
+  <label>Description:</label>
+  <textarea
+    type="text"
+    formControlName="description"
+    placeholder="Description"
+    class="form-control"
+    [ngClass]="{ 'is-invalid': submitted && f.description.errors }"
+  ></textarea>
+  <div *ngIf="submitted && f.description.errors">
+    <div *ngIf="f.description.errors.required">Description is required</div>
+  </div>
+</div>
+
+<div class="form-group">
+  <div *ngIf="isLoggedIn()">
+    <button  class="btn btn-info" type="submit">Edit</button>
+
+    <button class="btn btn-danger" (click)="deleteTrip(editForm,$event)">
+      Delete
+    </button>
+  </div>
+</div>
   </form>
 </div>
 

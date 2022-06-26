@@ -1,5 +1,6 @@
-<div>
+<div class="d-flex">
   <button *ngIf="isLoggedIn()" (click) = "addTrip()" class= "btn btn-info" >Add Trip</button>
+  <span class="ml-3 mt-auto mb-auto">Trips:{{trips.length}}</span>
 </div>
 
 <div class = "row" >

@@ -1,10 +1,10 @@
+import { TripDataService } from 'src/app/services/trip-data.service';
+import { AuthenticationService } from './../../services/authentication.service';
 import { Component, Input, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { Trip } from "src/app/models/trip";
-import { AuthenticationService } from "src/app/services/authentication.service";
-import { TripDataService } from "src/app/services/trip-data.service";
-import { TripCardComponent } from "../trip-card/trip-card.component";
+
 
 @Component({
   selector: "app-edit-trip",
@@ -16,11 +16,12 @@ export class EditTripComponent implements OnInit {
   // FIXME i tried adding a constructor *me
   editForm: FormGroup;
   submitted = false;
+
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private tripService: TripDataService,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private tripService: TripDataService
   ) {}
 
   ngOnInit() {
@@ -59,16 +60,31 @@ export class EditTripComponent implements OnInit {
     this.submitted = true;
 
     if (this.editForm.valid) {
-      //this.tripService.updateTrip(this.editForm.value)
+      //this.tripDataService.updateTrip(this.editForm.value)
       // FIXME *me
       this.tripService.editTrip(this.editForm.value).then((data) => {
         console.log(data);
-        this.router.navigate([""]);
+        this.router.navigate(["list-trips"]);
       });
     }
   }
 
   public isLoggedIn(): boolean {
     return this.authenticationService.isLoggedIn();
+  }
+
+  public editFormControls() {
+    return this.editForm.controls;
+  }
+
+  public async deleteTrip(tripForm: FormControl,$event) {
+    $event.preventDefault()
+
+    await this.tripService.deleteTrip(tripForm.get('code').value);
+    this.router.navigate(["list-trips"]);
+  }
+
+  get f() {
+    return this.editForm.controls;
   }
 }

@@ -14,6 +14,7 @@ const routes: Routes = [
   { path: "login", component: LoginComponent },
   { path: "list-trips", component: TripListingComponent, pathMatch: "full" },
   { path: "home", component: HomeComponent, pathMatch: "full" },
+ 
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

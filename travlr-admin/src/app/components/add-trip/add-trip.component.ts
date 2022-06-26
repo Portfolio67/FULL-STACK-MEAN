@@ -1,19 +1,8 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
-import { AuthenticationService } from "src/app/services/authentication.service";
 import { TripDataService } from "src/app/services/trip-data.service";
-// import { Injectable } from "@angular/core";
-// import { HttpClient } from "@angular/common/http";
-// import { HttpClientModule } from "@angular/common/http";
-// import { Trip } from 'models/trip';
 
-//import { Observable } from 'rxjs/Observable';
-
-// import { HttpParams } from "@angular/common/http";
-// const params = new HttpParams({
-//   fromString: 'orderBy="$key"&limitToFirst=1',
-// });
 
 @Component({
   selector: "app-add-trip",
@@ -21,36 +10,35 @@ import { TripDataService } from "src/app/services/trip-data.service";
   styleUrls: ["./add-trip.component.css"],
 })
 export class AddTripComponent implements OnInit {
-
   addForm: FormGroup;
   submitted = false;
-
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private tripService: TripDataService,
+    private tripService: TripDataService
   ) {}
 
   ngOnInit() {
     this.addForm = this.formBuilder.group({
       _id: [],
-      code: ["", Validators.required],
-      name: ["", Validators.required],
-      length: ["", Validators.required],
-      start: ["", Validators.required],
-      resort: ["", Validators.required],
-      perPerson: ["", Validators.required],
-      image: ["", Validators.required],
-      description: ["", Validators.required],
-      aliases: this.formBuilder.array([
-        this.formBuilder.control('')
-      ])
+      code: ["CLAR21" ],//+ parseInt((Math.random() * 400) + 1), Validators.required],
+      name: ["Claires`s Reef", Validators.required],
+      length: ["4 nights / 5 days", Validators.required],
+      start: ["6-2-2022", Validators.required],
+      resort: ["resort", Validators.required],
+      perPerson: [1999.0, [Validators.required]],
+      image: ["reef3.jpg", Validators.required],
+      description: [
+        "At Claires`s Reef...Sed et augue lorem. In sit amet placerat arcu.…",
+        Validators.required,
+      ],
+      aliases: this.formBuilder.array([this.formBuilder.control("")]),
     });
   }
 
   get aliases() {
-    return this.addForm.get('aliases') as FormArray;
+    return this.addForm.get("aliases") as FormArray;
   }
   // public addTrip(formData: Trip): Promise<Trip> {
   //   console.log("Inside TripDataService#addTrip");
@@ -69,14 +57,14 @@ export class AddTripComponent implements OnInit {
         //FIXME .subscribe( data => {
         .then((data) => {
           console.log(data);
-          this.router.navigate([""]);
+          this.router.navigate(["list-trips"]);
         });
     }
   }
-
 
   // get the form short name to access the form fields
   get f() {
     return this.addForm.controls;
   }
 }
+

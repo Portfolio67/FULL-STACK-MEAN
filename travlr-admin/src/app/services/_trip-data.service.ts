@@ -10,14 +10,12 @@ const params = new HttpParams({
   fromString: 'orderBy="$key"&limitToFirst=1',
 });
 
-
 @Injectable()
 export class TripDataService {
   //initialize with httpclient for fetching
   constructor(private http: HttpClient) {}
 
   private apiBaseUrl = "http://localhost:3000/api/";
-
 
   private tripUrl = `${this.apiBaseUrl}trips`; // was in get trips
 
@@ -39,7 +37,7 @@ export class TripDataService {
       .catch(this.handleError);
     // .then(response => responseType: "json")
   }
-//FIXME ?
+  //FIXME ?
   public addTrip(formData: Trip): Promise<Trip> {
     console.log("Inside TripDataService#addTrip");
     return this.http
@@ -52,6 +50,14 @@ export class TripDataService {
     console.log("Inside TripDataService#updateTrip");
     return this.http
       .post<Trip>(this.tripUrl, formData)
+      .toPromise()
+      .catch(this.handleError);
+  }
+
+  public deleteTrip(tripCode: string): Promise<any> {
+    console.log("Inside TripsDataSevice#getTrip");
+    return this.http
+      .delete<any>(this.tripUrl + "/" + tripCode, { responseType: "json" })
       .toPromise()
       .catch(this.handleError);
   }
